@@ -3,24 +3,33 @@
 
 import type { Metadata } from "next"
 import { ServicePageTemplate } from "@/components/service-page-template"
-import { Refrigerator, Snowflake, Wrench, Clock, Award, ShieldCheck, Store, Warehouse } from "lucide-react"
+import {
+  Refrigerator,
+  Snowflake,
+  Wrench,
+  Clock,
+  Award,
+  ShieldCheck,
+  Store,
+  Warehouse,
+} from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Refrigeration Repairs in Gauteng | Fridge and Freezer Repair | Cold Fix Services",
+  title: "Fridge & Freezer Repairs in Gauteng | Cold Fix Services",
   description:
-    "Fast, reliable refrigeration repairs in Gauteng. We fix fridges, freezers, and chest freezers with cooling faults, gas leaks, thermostat and compressor problems. Serving Pretoria, Johannesburg and Midrand. Same day callouts available.",
+    "Fridge, freezer and refrigerator repairs across Gauteng. We fix cooling faults, refrigerant leaks, thermostats, compressors and more. Same-day callouts available.",
   keywords:
-    "refrigeration repairs Gauteng, fridge repair Johannesburg, freezer repair Pretoria, chest freezer repair, fridge not cooling, refrigeration technician Midrand",
+    "fridge repair Gauteng, refrigerator repair Gauteng, freezer repair Gauteng, fridge repair Johannesburg, fridge repair Pretoria, refrigerator repair near me, fridge not cooling repair, fridge technician Gauteng",
   openGraph: {
-    title: "Refrigeration Repairs | Cold Fix Services Gauteng",
+    title: "Fridge & Freezer Repairs in Gauteng | Cold Fix Services",
     description:
-      "Expert fridge and freezer repairs for homes and businesses across Gauteng. Same day callouts and honest pricing.",
+      "Fast fridge and freezer repairs across Gauteng. Cooling faults, refrigerant leaks, compressors, thermostats and more. Same-day callouts available.",
     images: [
       {
         url: "/refrigeration-repair-technician.png",
         width: 1200,
         height: 630,
-        alt: "Refrigeration repairs in Gauteng by Cold Fix Services",
+        alt: "Fridge and freezer repair technician in Gauteng",
       },
     ],
   },
@@ -29,95 +38,111 @@ export const metadata: Metadata = {
 export default function RefrigerationRepairsPage() {
   return (
     <ServicePageTemplate
-      title="Refrigeration Repairs"
-      description="When your fridge or freezer stops cooling, food and stock are on the line. Cold Fix Services provides fast, reliable refrigeration repairs for fridges, freezers, and chest freezers across Gauteng. Our refrigerant handling certified technicians diagnose cooling faults, gas leaks, thermostat problems, and compressor failures, then get your unit running again with quality parts and lasting repairs."
+      title="Fridge & Freezer Repairs in Gauteng"
+      description="Need a fridge or freezer repair? Cold Fix Services provides fast, reliable on-site repairs for refrigerators, fridges, freezers and chest freezers across Gauteng. Our refrigerant-handling certified technicians diagnose the actual fault, explain the repair clearly and provide an upfront quote before work starts. We repair cooling problems, refrigerant leaks, thermostats, compressors, fans, defrost systems, door seals and more."
       icon={Refrigerator}
       heroImage="/refrigeration-repair-technician.png"
       priceRange="Free quotes"
       responseTime="Same day"
       features={[
-        "Fridge repairs for all brands",
+        "Fridge and refrigerator repairs",
         "Freezer and chest freezer repairs",
-        "Cooling and temperature fault finding",
-        "Refrigerant gas leak detection and refills",
+        "Fridge not cooling diagnosis",
+        "Refrigerant leak detection and repair",
+        "Refrigerant recharge where required",
         "Thermostat and control repairs",
         "Compressor diagnosis and replacement",
         "Door seal and gasket replacement",
         "Defrost system repairs",
         "Fan and evaporator repairs",
         "Bar fridge and beverage cooler repairs",
-        "Ice maker repairs",
-        "Emergency breakdown callouts",
+        "Emergency refrigeration callouts",
       ]}
       benefits={[
         {
-          title: "Fast Turnaround",
+          title: "Fast Same-Day Response",
           description:
-            "We know a broken fridge cannot wait. Our technicians respond quickly with same day callouts to protect your food and stock.",
+            "A broken fridge cannot always wait. We respond quickly with same-day callouts where available to help protect your food and stock.",
           icon: Clock,
         },
         {
           title: "Certified Technicians",
           description:
-            "Refrigerant handling certified technicians who diagnose and repair cooling faults correctly the first time.",
+            "Our refrigerant-handling certified technicians diagnose cooling faults and use proper refrigeration repair methods.",
           icon: Award,
         },
         {
-          title: "All Brands Serviced",
+          title: "Major Brands Serviced",
           description:
-            "We repair every major fridge and freezer brand, from household units to bar fridges and beverage coolers.",
+            "We repair major fridge and freezer brands, including Samsung, LG and other common household refrigeration brands.",
           icon: Refrigerator,
         },
         {
           title: "Quality Parts",
           description:
-            "We use quality replacement parts and proper repair methods so your unit keeps cooling for the long term.",
+            "We use quality replacement parts and proper repair methods to help restore reliable cooling.",
           icon: ShieldCheck,
         },
         {
-          title: "Honest Pricing",
+          title: "Clear Upfront Quotes",
           description:
-            "You get a clear quote before any work starts, with no hidden costs and honest advice on repair versus replacement.",
+            "You receive a clear quote before repair work starts, with honest advice on whether repair or replacement makes more sense.",
           icon: Wrench,
         },
         {
           title: "Cooling Specialists",
           description:
-            "Refrigeration is our core business. We understand cooling systems inside out and fix the root cause, not just the symptom.",
+            "We diagnose the root cause of refrigeration faults rather than simply treating the visible symptom.",
           icon: Snowflake,
         },
       ]}
       process={[
         {
           step: 1,
-          title: "Diagnosis",
+          title: "Tell Us the Problem",
           description:
-            "We inspect your fridge or freezer, test the cooling system, and identify the exact cause of the fault.",
+            "Tell us what your fridge or freezer is doing, whether it is not cooling, leaking, making noise or showing another fault.",
         },
         {
           step: 2,
-          title: "Clear Quote",
+          title: "On-Site Diagnosis",
           description:
-            "You receive an honest quote covering parts and labour, with advice on whether a repair or replacement makes sense.",
+            "A technician inspects the unit and tests the cooling system to identify the actual cause of the problem.",
         },
         {
           step: 3,
-          title: "Professional Repair",
+          title: "Clear Quote",
           description:
-            "Our technicians complete the repair using quality parts and proper refrigeration techniques.",
+            "You receive an upfront quote for the recommended repair, including parts and labour.",
         },
         {
           step: 4,
-          title: "Testing and Handover",
+          title: "Repair & Test",
           description:
-            "We run the unit, confirm it holds the correct temperature, and make sure you are happy before we leave.",
+            "We complete the repair using proper techniques and test the unit before handing it back to you.",
         },
       ]}
       relatedServices={[
-        { title: "Commercial Refrigeration", href: "/commercial-refrigeration", icon: Store },
-        { title: "Cold Room Installation and Repair", href: "/cold-room-installation-repair", icon: Warehouse },
-        { title: "Appliance Repairs", href: "/appliance-repairs", icon: Wrench },
-        { title: "Emergency Callout Service", href: "/emergency-callout-service", icon: Clock },
+        {
+          title: "Commercial Refrigeration",
+          href: "/commercial-refrigeration",
+          icon: Store,
+        },
+        {
+          title: "Cold Room Installation and Repair",
+          href: "/cold-room-installation-repair",
+          icon: Warehouse,
+        },
+        {
+          title: "Appliance Repairs",
+          href: "/appliance-repairs",
+          icon: Wrench,
+        },
+        {
+          title: "Emergency Callout Service",
+          href: "/emergency-callout-service",
+          icon: Clock,
+        },
       ]}
       serviceAreas={[
         "Pretoria",
@@ -135,24 +160,87 @@ export default function RefrigerationRepairsPage() {
       <section className="py-16 lg:py-24 bg-muted">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="mx-auto max-w-4xl">
-            <h2 className="mb-8 text-3xl font-bold">Reliable Fridge and Freezer Repairs Across Gauteng</h2>
+            <h2 className="mb-8 text-3xl font-bold">
+              Fridge Not Cooling? Get a Fast Repair Across Gauteng
+            </h2>
+
             <div className="prose prose-lg max-w-none">
               <p className="text-muted-foreground leading-relaxed mb-6">
-                A fridge that is not cooling, a freezer building up ice, or a unit making strange noises are all signs that something needs attention. <strong>Cold Fix Services</strong> repairs household and small commercial refrigeration for clients throughout <strong>Pretoria, Johannesburg, Midrand</strong>, and the wider Gauteng region. We carry common spares so most repairs can be completed on the first visit.
+                Is your fridge running but not getting cold? Is your freezer
+                struggling to freeze, leaking water, making unusual noises or
+                building up excessive ice?{" "}
+                <strong>Cold Fix Services</strong> provides professional fridge,
+                refrigerator and freezer repairs across{" "}
+                <strong>Pretoria, Johannesburg, Midrand</strong> and the wider
+                Gauteng region.
               </p>
+
+              <p className="text-muted-foreground leading-relaxed mb-6">
+                Our technicians diagnose the actual cause of the fault before
+                recommending a repair. We handle cooling faults, refrigerant
+                leaks, thermostats, compressors, fans, defrost systems, door
+                seals and other common refrigeration problems. Where refrigerant
+                work is required, we provide leak detection, repair and
+                recharge as appropriate.
+              </p>
+
               <div className="grid md:grid-cols-2 gap-6 my-8">
                 <div className="p-6 rounded-xl bg-card border border-border">
-                  <h3 className="font-bold text-lg mb-2 text-secondary">Common Faults We Fix</h3>
+                  <h3 className="font-bold text-lg mb-2 text-secondary">
+                    Common Fridge & Freezer Problems We Fix
+                  </h3>
                   <p className="text-sm text-muted-foreground">
-                    Not cooling, cooling too much, water leaks, ice build up, loud noises, tripping power, and doors that no longer seal.
+                    Fridge not cooling, freezer not freezing, temperature
+                    problems, refrigerant leaks, water leaks, ice build-up,
+                    loud noises, power tripping, faulty thermostats, compressor
+                    problems and doors that no longer seal properly.
                   </p>
                 </div>
+
                 <div className="p-6 rounded-xl bg-card border border-border">
-                  <h3 className="font-bold text-lg mb-2 text-secondary">Repair or Replace</h3>
+                  <h3 className="font-bold text-lg mb-2 text-secondary">
+                    Refrigerant & Gas Problems
+                  </h3>
                   <p className="text-sm text-muted-foreground">
-                    We give honest advice on whether a repair is worthwhile or whether a replacement will save you money over time.
+                    If your fridge has lost refrigerant, we can inspect the
+                    system, check for leaks and carry out the required repair
+                    before recharging the system where appropriate.
                   </p>
                 </div>
+
+                <div className="p-6 rounded-xl bg-card border border-border">
+                  <h3 className="font-bold text-lg mb-2 text-secondary">
+                    Major Brands Serviced
+                  </h3>
+                  <p className="text-sm text-muted-foreground">
+                    We service major household refrigeration brands, including
+                    Samsung, LG and other common fridge and freezer brands.
+                  </p>
+                </div>
+
+                <div className="p-6 rounded-xl bg-card border border-border">
+                  <h3 className="font-bold text-lg mb-2 text-secondary">
+                    Repair or Replace?
+                  </h3>
+                  <p className="text-sm text-muted-foreground">
+                    We give honest advice on whether repairing your fridge or
+                    freezer is worthwhile or whether replacement may be the
+                    better long-term option.
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-12 rounded-2xl bg-card border border-border p-8">
+                <h2 className="text-2xl font-bold mb-4">
+                  Need a Fridge Technician Near You?
+                </h2>
+
+                <p className="text-muted-foreground leading-relaxed">
+                  If your fridge or freezer is not cooling properly, do not
+                  leave the problem until food or stock is spoiled. Contact
+                  Cold Fix Services for a diagnosis, clear quote and professional
+                  refrigeration repair across Gauteng.
+                </p>
               </div>
             </div>
           </div>
