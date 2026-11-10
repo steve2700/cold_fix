@@ -3,6 +3,7 @@
 
 import type { Metadata } from "next"
 import { ServicePageTemplate } from "@/components/service-page-template"
+import { SERVICE_CONTENT } from "@/components/site/service-content"
 import { Zap, Shield, Award, Lightbulb, Battery, CheckCircle, Wind, Refrigerator, WashingMachine, Wrench } from "lucide-react"
 
 export const metadata: Metadata = {
@@ -29,6 +30,7 @@ export const metadata: Metadata = {
 export default function ElectricalServicesPage() {
   return (
     <ServicePageTemplate
+      content={SERVICE_CONTENT.electricalServices}
       title="Electrical Services"
       description="Every appliance, air conditioner, and cold room needs a safe, reliable power supply. Cold Fix Services provides the electrical work that supports our installations, including wiring, fault finding, dedicated circuits, isolators, and safe power connections. Our team makes sure your equipment is connected correctly, safely, and to standard across Gauteng."
       icon={Zap}

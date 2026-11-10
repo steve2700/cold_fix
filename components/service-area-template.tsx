@@ -1,11 +1,19 @@
 import type { ReactNode } from "react"
 import Link from "next/link"
-import Image from "next/image"
-import { Breadcrumbs } from "@/components/breadcrumbs"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { CheckCircle, Phone, ArrowRight, MapPin, Wind, Refrigerator, WashingMachine, Clock, Award } from "lucide-react"
+import { makeAreaFaults, areaHeroVisual, areaFaqs } from "@/components/site/area-content"
+import {
+  FaqSection,
+  FaultSection,
+  FinalCta,
+  Hero,
+  LinksSection,
+  Prose,
+  ScopeSection,
+  displayFont,
+  h2Class,
+} from "@/components/site/ui"
 
+// Older props are kept so every area page keeps working.
 interface ServiceAreaTemplateProps {
   areaName: string
   description: string
@@ -22,352 +30,123 @@ interface ServiceAreaTemplateProps {
 }
 
 const popularServices = [
-  { icon: Wind, title: "Air Conditioning Services", href: "/air-conditioning-services" },
-  { icon: Refrigerator, title: "Refrigeration Repairs", href: "/refrigeration-repairs" },
-  { icon: WashingMachine, title: "Appliance Repairs", href: "/appliance-repairs" },
-  { icon: Clock, title: "Emergency Callout Service", href: "/emergency-callout-service" },
+  { title: "Air Conditioning Services", href: "/air-conditioning-services" },
+  { title: "Refrigeration Repairs", href: "/refrigeration-repairs" },
+  { title: "Appliance Repairs", href: "/appliance-repairs" },
+  { title: "Emergency Callout Service", href: "/emergency-callout-service" },
 ]
 
 export function ServiceAreaTemplate({
   areaName,
   description,
   suburbs,
-  heroImage,
-  introImage,
   introduction,
   servicesOffered,
   whyChooseUs,
   nearbyAreas,
-  responseTime = "Same day",
-  projectsCompleted = 500,
   children,
 }: ServiceAreaTemplateProps) {
+  const place = `area_${areaName.toLowerCase().replace(/[^a-z]+/g, "_")}`
+
   return (
     <>
-      {/* Hero Section */}
-      <section className="relative overflow-hidden bg-primary py-16 lg:py-24">
-        <div className="absolute inset-0">
-          <Image
-            src={heroImage || "/map-of-gauteng-south-africa-highlighting-pretoria-.jpg"}
-            alt={`Cold Fix Services appliance and refrigeration repairs in ${areaName}`}
-            fill
-            className="object-cover opacity-15"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary/95 to-primary/90" />
-        </div>
+      <Hero
+        place={place}
+        crumbs={[{ label: "Service Areas", href: "/service-areas" }, { label: areaName }]}
+        h1={`Fridge, aircon or appliance broken in ${areaName}? We can be there today.`}
+        lead={description}
+        micro="Send a photo of the fault on WhatsApp. It helps us arrive with the right parts."
+        visual={areaHeroVisual(areaName)}
+      />
 
-        <div className="container relative mx-auto px-4 lg:px-8">
-          <Breadcrumbs variant="onDark" items={[{ label: "Service Areas", href: "/service-areas" }, { label: areaName }]} />
-          <div className="grid items-center gap-12 lg:grid-cols-2">
-            <div>
-              <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-white/10 px-5 py-2.5 text-sm font-medium text-white backdrop-blur-sm border border-white/10">
-                <MapPin className="h-4 w-4 text-accent" />
-                Service Area
-              </div>
-              <h1 className="mb-6 text-balance text-4xl font-bold tracking-tight text-primary-foreground md:text-5xl lg:text-6xl">
-                Appliance, Aircon and Refrigeration Repairs in {areaName}
-              </h1>
-              <p className="mb-8 text-pretty text-lg text-primary-foreground/90 leading-relaxed">{description}</p>
+      <FaultSection
+        title="What has stopped working?"
+        intro={`Pick the one closest to your problem. You will see what usually causes it, what we do about it, and what to do while you wait. The WhatsApp message already says you are in ${areaName}.`}
+        faults={makeAreaFaults(areaName)}
+        place={`${place}_faults`}
+      />
 
-              {/* Quick Stats */}
-              <div className="mb-8 flex flex-wrap gap-4">
-                <div className="flex items-center gap-2 rounded-lg bg-white/10 px-4 py-2 backdrop-blur-sm border border-white/10">
-                  <Clock className="h-5 w-5 text-accent" />
-                  <div>
-                    <div className="text-xs text-white/70">Response Time</div>
-                    <div className="text-sm font-semibold text-white">{responseTime}</div>
-                  </div>
-                </div>
-                <div className="flex items-center gap-2 rounded-lg bg-white/10 px-4 py-2 backdrop-blur-sm border border-white/10">
-                  <Award className="h-5 w-5 text-accent" />
-                  <div>
-                    <div className="text-xs text-white/70">Repairs Completed</div>
-                    <div className="text-sm font-semibold text-white">{projectsCompleted}+</div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex flex-wrap gap-3">
-                <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 shadow-lg">
-                  <Link href="/contact">
-                    <Phone className="mr-2 h-5 w-5" />
-                    Get a Free Quote
-                  </Link>
-                </Button>
-                <Button
-                  asChild
-                  size="lg"
-                  variant="outline"
-                  className="border-white/30 bg-white/5 text-white hover:bg-white/10 backdrop-blur-sm"
-                >
-                  <Link href="/services">
-                    View All Services
-                    <ArrowRight className="ml-2 h-5 w-5" />
-                  </Link>
-                </Button>
-              </div>
-            </div>
-
-            <div className="hidden lg:block">
-              <div className="rounded-2xl bg-white/10 backdrop-blur-sm border border-white/10 p-6 shadow-2xl">
-                <h3 className="mb-4 text-lg font-semibold text-white flex items-center gap-2">
-                  <MapPin className="h-5 w-5 text-accent" />
-                  Suburbs We Cover in {areaName}
-                </h3>
-                <div className="flex flex-wrap gap-2">
-                  {suburbs.map((suburb) => (
-                    <span
-                      key={suburb}
-                      className="rounded-full bg-white/10 px-3 py-1.5 text-sm text-white/90 border border-white/10 hover:bg-white/20 transition-colors"
-                    >
-                      {suburb}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="mt-6 pt-6 border-t border-white/10">
-                  <p className="text-sm text-white/80 mb-3">
-                    <strong className="text-white">Fast response times:</strong> We serve every suburb in {areaName} with quick, professional service.
-                  </p>
-                  <p className="text-xs text-white/60">
-                    Based in Gauteng and positioned to reach {areaName} efficiently.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Introduction */}
-      <section className="py-16 lg:py-24">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid items-center gap-12 lg:grid-cols-2">
-            <div>
-              <span className="mb-4 inline-block rounded-full bg-secondary/10 px-4 py-1.5 text-sm font-medium text-secondary">
-                About Our Services
-              </span>
-              <h2 className="mb-6 text-balance text-3xl font-bold tracking-tight md:text-4xl">
-                Your Trusted Repair Team in {areaName}
-              </h2>
-              <div className="prose prose-lg max-w-none">
-                <p className="text-muted-foreground leading-relaxed mb-6">{introduction}</p>
-
-                <p className="text-muted-foreground leading-relaxed mb-6">
-                  With years of experience serving {areaName} and surrounding areas, Cold Fix Services has completed <strong>{projectsCompleted}+ repairs and installations</strong> for homes and businesses. Our local knowledge means we understand the needs of properties in {areaName}.
-                </p>
-              </div>
-
-              <div className="mb-6 lg:hidden">
-                <h3 className="mb-3 text-sm font-semibold flex items-center gap-2">
-                  <MapPin className="h-4 w-4 text-secondary" />
-                  Suburbs We Cover:
-                </h3>
-                <div className="flex flex-wrap gap-2">
-                  {suburbs.map((suburb) => (
-                    <span key={suburb} className="rounded-full bg-muted px-3 py-1.5 text-sm text-muted-foreground border border-border">
-                      {suburb}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90">
-                <Link href="/about">
-                  Learn More About Us
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-            </div>
-
-            <div className="relative">
-              <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-xl border border-border">
-                <Image
-                  src={introImage || "/cold-fix-technicians-servicing-air-conditioner.png"}
-                  alt={`Professional appliance and refrigeration repairs in ${areaName} by Cold Fix Services`}
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div className="absolute -bottom-6 -right-6 rounded-xl bg-accent p-6 shadow-2xl border border-border max-w-[200px] hidden md:block">
-                <div className="text-4xl font-bold text-accent-foreground mb-1">{projectsCompleted}+</div>
-                <div className="text-sm text-accent-foreground/80">Repairs Completed in {areaName}</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Services Offered */}
-      <section className="bg-muted py-16 lg:py-24">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="mx-auto mb-12 max-w-3xl text-center">
-            <span className="mb-4 inline-block rounded-full bg-secondary/10 px-4 py-1.5 text-sm font-medium text-secondary">
-              Comprehensive Services
-            </span>
-            <h2 className="mb-4 text-balance text-3xl font-bold tracking-tight md:text-4xl">
-              Repair Services Available in {areaName}
+      {/* Local intro and suburbs */}
+      <section className="bg-white">
+        <div className="mx-auto grid max-w-6xl gap-10 px-5 py-16 md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] md:py-24">
+          <div>
+            <h2 className={h2Class} style={displayFont}>
+              Cold Fix in {areaName}.
             </h2>
-            <p className="text-muted-foreground text-lg">
-              We provide a full range of appliance, air conditioning, and refrigeration services to homes and businesses throughout {areaName} and surrounding suburbs.
-            </p>
           </div>
-
-          <div className="mb-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {servicesOffered.map((service) => (
-              <div key={service} className="flex items-start gap-3 rounded-xl bg-card p-5 border border-border hover:border-secondary hover:shadow-lg transition-all group">
-                <CheckCircle className="mt-0.5 h-5 w-5 flex-shrink-0 text-accent group-hover:scale-110 transition-transform" />
-                <span className="text-sm font-medium">{service}</span>
-              </div>
-            ))}
-          </div>
-
-          <div className="mb-8">
-            <h3 className="mb-6 text-center text-xl font-bold">Popular Services in {areaName}</h3>
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              {popularServices.map((service) => (
-                <Link
-                  key={service.title}
-                  href={service.href}
-                  className="group flex items-center gap-3 rounded-xl bg-card p-5 border border-border transition-all hover:border-secondary hover:shadow-lg hover:-translate-y-1"
-                >
-                  <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-secondary/10 text-secondary transition-colors group-hover:bg-secondary group-hover:text-secondary-foreground">
-                    <service.icon className="h-6 w-6" />
-                  </div>
-                  <div className="flex-1">
-                    <span className="text-sm font-semibold group-hover:text-secondary transition-colors block">
-                      {service.title}
-                    </span>
-                    <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-secondary transition-colors mt-1" />
-                  </div>
-                </Link>
+          <div>
+            <p className="m-0 text-[1.1875rem] leading-relaxed text-[#33475f]">{introduction}</p>
+            <h3 className="mb-3 mt-10 text-[1.375rem] font-bold text-[#0f2c59]">Suburbs we cover in {areaName}</h3>
+            <p className="m-0 leading-loose text-[#33475f]">
+              {suburbs.map((s, i) => (
+                <span key={s}>
+                  <span className="font-semibold text-[#0f2c59]">{s}</span>
+                  {i < suburbs.length - 1 ? ", " : ""}
+                </span>
               ))}
-            </div>
-          </div>
-
-          <div className="text-center">
-            <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
-              <Link href="/services">
-                View All Services
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* Why Choose Us */}
-      <section className="py-16 lg:py-24">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid items-center gap-12 lg:grid-cols-2">
-            <div className="order-2 lg:order-1">
-              <div className="grid gap-4 sm:grid-cols-2">
-                {whyChooseUs.map((reason, index) => (
-                  <Card key={index} className="border-border hover:border-secondary hover:shadow-lg transition-all group">
-                    <CardContent className="p-5">
-                      <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-accent/20 text-accent text-sm font-bold group-hover:bg-accent group-hover:text-accent-foreground transition-colors">
-                        {index + 1}
-                      </div>
-                      <p className="text-sm text-muted-foreground leading-relaxed">{reason}</p>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </div>
-
-            <div className="order-1 lg:order-2">
-              <span className="mb-4 inline-block rounded-full bg-secondary/10 px-4 py-1.5 text-sm font-medium text-secondary">
-                Why Choose Us
-              </span>
-              <h2 className="mb-6 text-balance text-3xl font-bold tracking-tight md:text-4xl">
-                Why {areaName} Homes and Businesses Trust Cold Fix Services
-              </h2>
-              <div className="prose prose-lg max-w-none">
-                <p className="text-muted-foreground leading-relaxed mb-6">
-                  With years of experience serving {areaName} and surrounding areas, we understand the needs of local homes and businesses. Our commitment to quality workmanship, honest pricing, and friendly service has made us the preferred choice for appliance, aircon, and refrigeration repairs.
-                </p>
-                <p className="text-muted-foreground leading-relaxed mb-6">
-                  Based in <strong>Gauteng</strong>, we reach {areaName} quickly with <strong>{responseTime.toLowerCase()} service</strong> for most bookings. We are available for emergency callouts, routine servicing, and new installations.
-                </p>
-              </div>
-              <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
-                <Link href="/contact">
-                  <Phone className="mr-2 h-5 w-5" />
-                  Contact Us Today
-                </Link>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Additional Content */}
-      {children}
-
-      {/* Nearby Areas */}
-      <section className="bg-muted py-16 lg:py-24">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="mb-8">
-            <h2 className="mb-3 text-2xl font-bold">We Also Serve Nearby Areas</h2>
-            <p className="text-muted-foreground">
-              Cold Fix Services provides appliance, aircon, and refrigeration repairs throughout Gauteng.
-              Explore our other service areas:
+              {" "}and surrounds.
             </p>
           </div>
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {nearbyAreas.map((area) => (
-              <Link
-                key={area.name}
-                href={area.href}
-                className="flex items-center justify-between gap-2 rounded-xl bg-card px-5 py-4 text-sm font-medium transition-all hover:bg-secondary hover:text-secondary-foreground border border-border hover:shadow-lg group"
-              >
-                <div className="flex items-center gap-2">
-                  <MapPin className="h-4 w-4 text-secondary group-hover:text-secondary-foreground" />
-                  {area.name}
-                </div>
-                <ArrowRight className="h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity" />
-              </Link>
-            ))}
-          </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="bg-primary py-16 lg:py-24">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="mx-auto max-w-3xl text-center">
-            <h2 className="mb-6 text-balance text-3xl font-bold tracking-tight text-primary-foreground md:text-4xl">
-              Need a Repair in {areaName}?
+      <ScopeSection title={`What we repair in ${areaName}.`} items={servicesOffered} />
+
+      {/* Why choose us, as a plain list */}
+      <section className="bg-white">
+        <div className="mx-auto grid max-w-6xl gap-10 px-5 py-16 md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] md:py-24">
+          <div>
+            <h2 className={h2Class} style={displayFont}>
+              Why {areaName} calls Cold Fix.
             </h2>
-            <p className="mb-8 text-lg text-primary-foreground/90 leading-relaxed">
-              Contact Cold Fix Services today for a free quote. Our experienced technicians are ready to help with your appliance, air conditioning, or refrigeration needs in {areaName}, whether at home or at your business.
-            </p>
-            <div className="flex flex-wrap justify-center gap-3">
-              <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 shadow-lg">
-                <Link href="/contact">
-                  <Phone className="mr-2 h-5 w-5" />
-                  Request a Free Quote
-                </Link>
-              </Button>
-              <Button
-                asChild
-                size="lg"
-                variant="outline"
-                className="border-white/30 bg-white/5 text-white hover:bg-white/10 backdrop-blur-sm"
-              >
-                <Link href="tel:+27703096749">
-                  <Phone className="mr-2 h-5 w-5" />
-                  Call Us Now
-                </Link>
-              </Button>
-            </div>
-            <p className="mt-6 text-sm text-primary-foreground/70">
-              Response time in {areaName}: {responseTime} • Available 24/7 for emergencies
-            </p>
           </div>
+          <ul className="m-0 list-none p-0">
+            {whyChooseUs.map((item) => (
+              <li
+                key={item}
+                className="border-t border-[#0f2c59]/20 py-5 text-[1.25rem] font-semibold leading-snug text-[#0f2c59]"
+              >
+                {item}
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
+
+      {children ? <Prose>{children}</Prose> : null}
+
+      <FaqSection faqs={areaFaqs(areaName)} />
+
+      <LinksSection relatedTitle="Popular services" related={popularServices} areas={undefined} />
+
+      {nearbyAreas.length > 0 ? (
+        <section className="bg-[#e6f0f5]">
+          <div className="mx-auto max-w-6xl px-5 py-14 md:py-20">
+            <h2 className="m-0 text-[2.25rem] font-extrabold leading-none text-[#0f2c59]" style={displayFont}>
+              We also serve nearby areas
+            </h2>
+            <ul className="m-0 mt-6 flex list-none flex-wrap gap-3 p-0">
+              {nearbyAreas.map((a) => (
+                <li key={a.href}>
+                  <Link
+                    href={a.href}
+                    className="inline-flex min-h-12 items-center rounded-lg border-2 border-[#0f2c59] px-5 text-lg font-bold text-[#0f2c59] hover:bg-[#0f2c59] hover:text-white focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-[#0f2c59]"
+                  >
+                    {a.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      ) : null}
+
+      <FinalCta
+        place={place}
+        headline={`Get it working again in ${areaName}.`}
+        lead="Call or WhatsApp now. Tell us what has stopped and where you are, and we will tell you when a technician can be there."
+        areas={[areaName, ...nearbyAreas.map((n) => n.name)]}
+      />
     </>
   )
 }

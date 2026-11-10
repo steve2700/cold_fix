@@ -3,6 +3,7 @@
 
 import type { Metadata } from "next"
 import { ServicePageTemplate } from "@/components/service-page-template"
+import { SERVICE_CONTENT } from "@/components/site/service-content"
 import { Snowflake, Zap, Award, Wrench, Building2, Clock, Refrigerator, WashingMachine } from "lucide-react"
 
 export const metadata: Metadata = {
@@ -29,6 +30,7 @@ export const metadata: Metadata = {
 export default function AirConditioningServicesPage() {
   return (
     <ServicePageTemplate
+      content={SERVICE_CONTENT.airConditioning}
       title="Air Conditioning Services"
       description="Stay comfortable all year round with professional air conditioning solutions from Cold Fix Services. We install, service, and repair split systems, multi split units, ducted systems, and inverters for homes and businesses across Gauteng. Our technicians are refrigerant handling certified and work with all major brands to keep your space cool and your running costs low."
       icon={Snowflake}

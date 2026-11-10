@@ -3,6 +3,7 @@
 
 import type { Metadata } from "next"
 import { ServicePageTemplate } from "@/components/service-page-template"
+import { SERVICE_CONTENT } from "@/components/site/service-content"
 import { Clock, Phone, Wrench, Award, ShieldCheck, Snowflake, Refrigerator, Zap } from "lucide-react"
 
 export const metadata: Metadata = {
@@ -29,6 +30,7 @@ export const metadata: Metadata = {
 export default function EmergencyCalloutPage() {
   return (
     <ServicePageTemplate
+      content={SERVICE_CONTENT.emergencyCalloutService}
       title="Emergency Callout Service"
       description="When a fridge, freezer, cold room, or air conditioner fails, every hour counts. Cold Fix Services provides a fast emergency callout service across Gauteng for refrigeration, air conditioning, and appliance breakdowns. We respond quickly to protect your stock, restore cooling, and get your home or business running again."
       icon={Clock}

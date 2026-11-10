@@ -1,6 +1,6 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
+import { Sofia_Sans_Extra_Condensed, Atkinson_Hyperlegible_Next } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import Script from "next/script"
@@ -8,8 +8,24 @@ import "./globals.css"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { WhatsAppButton } from "@/components/whatsapp-button"
+import { HideOnLanding } from "@/components/hide-on-landing"
+import { StickyContactBar } from "@/components/site/sticky-contact-bar"
 
-const inter = Inter({ subsets: ["latin"] })
+const display = Sofia_Sans_Extra_Condensed({
+  subsets: ["latin"],
+  weight: "variable",
+  variable: "--font-lp-display",
+  display: "swap",
+})
+
+const bodyFont = Atkinson_Hyperlegible_Next({
+  subsets: ["latin"],
+  weight: "variable",
+  variable: "--font-lp-body",
+  display: "swap",
+  adjustFontFallback: false,
+  fallback: ["system-ui", "Arial", "sans-serif"],
+})
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.coldfix.co.za"),
@@ -200,13 +216,16 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${inter.className} antialiased`}>
+      <body className={`${display.variable} ${bodyFont.variable} antialiased`} style={{ fontFamily: "var(--font-lp-body), system-ui, sans-serif" }}>
         <div className="flex min-h-screen flex-col">
-          <Header />
+          <HideOnLanding><Header /></HideOnLanding>
           <main className="flex-grow">{children}</main>
-          <Footer />
+          <HideOnLanding><Footer /></HideOnLanding>
+          <HideOnLanding><StickyContactBar /></HideOnLanding>
         </div>
-        <WhatsAppButton />
+        <div className="hidden md:block">
+          <HideOnLanding><WhatsAppButton /></HideOnLanding>
+        </div>
         <Analytics />
         <SpeedInsights />
       </body>

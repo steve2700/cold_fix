@@ -3,6 +3,7 @@
 
 import type { Metadata } from "next"
 import { ServicePageTemplate } from "@/components/service-page-template"
+import { SERVICE_CONTENT } from "@/components/site/service-content"
 import { CalendarClock, Clock, ShieldCheck, TrendingUp, CheckCircle, Settings, Wind, Refrigerator, Store } from "lucide-react"
 
 export const metadata: Metadata = {
@@ -29,6 +30,7 @@ export const metadata: Metadata = {
 export default function MaintenanceContractsPage() {
   return (
     <ServicePageTemplate
+      content={SERVICE_CONTENT.propertyMaintenance}
       title="Maintenance Contracts"
       description="Regular servicing keeps your appliances and cooling equipment reliable and cheaper to run. Cold Fix Services offers scheduled maintenance contracts for homes and businesses across Gauteng, covering air conditioning, refrigeration, and household appliances. Planned visits mean fewer breakdowns, longer equipment life, and priority support when you need it."
       icon={CalendarClock}

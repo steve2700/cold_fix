@@ -1,0 +1,201 @@
+/* Cold room controller display, drawn in SVG so it needs no extra font. */
+
+.panel {
+  position: relative;
+  width: 100%;
+  max-width: 460px;
+  padding: 14px;
+  border-radius: 18px;
+  background: linear-gradient(160deg, #1b3a6b 0%, #0f2c59 55%, #0a2146 100%);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.09) inset,
+    0 30px 60px -20px rgba(0, 0, 0, 0.65);
+}
+
+.screw {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #7f9bbd, #2b4a78);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.35);
+}
+.screw::after {
+  content: "";
+  position: absolute;
+  left: 1px;
+  right: 1px;
+  top: 3.5px;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.45);
+  transform: rotate(35deg);
+}
+.tl { top: 5px; left: 5px; }
+.tr { top: 5px; right: 5px; }
+.bl { bottom: 5px; left: 5px; }
+.br { bottom: 5px; right: 5px; }
+
+.glass {
+  border-radius: 10px;
+  padding: 16px 18px 18px;
+  background: #031024;
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.6) inset,
+    0 0 40px rgba(0, 0, 0, 0.6) inset;
+}
+
+.ok { color: #00b4d8; }
+.alarm { color: #ff9f1c; }
+
+.status {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 24px;
+  color: #6f8bab;
+  font-size: 0.8rem;
+  letter-spacing: 0.01em;
+}
+.statusIcons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.iconOn { color: currentColor; }
+.iconOff { color: #1d3350; }
+
+.bell { animation: blink 0.9s steps(1, end) infinite; }
+@keyframes blink {
+  50% { opacity: 0.15; }
+}
+
+.readout {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 4px;
+  margin-top: 10px;
+}
+.digits {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+}
+.digit {
+  height: clamp(86px, 17vw, 128px);
+  width: auto;
+  flex: none;
+  overflow: visible;
+}
+.segOn {
+  fill: currentColor;
+  filter: drop-shadow(0 0 6px currentColor);
+}
+.segOff {
+  fill: #4b6d92;
+  opacity: 0.1;
+}
+.unit {
+  align-self: flex-start;
+  margin-top: 6px;
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.gauge {
+  position: relative;
+  margin-top: 22px;
+  height: 6px;
+  border-radius: 3px;
+}
+.needle {
+  position: absolute;
+  top: -5px;
+  width: 4px;
+  height: 16px;
+  margin-left: -2px;
+  border-radius: 2px;
+  background: #f3f8fb;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
+}
+.tick {
+  position: absolute;
+  top: -3px;
+  width: 1px;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.55);
+}
+.tickLabel {
+  position: absolute;
+  top: 16px;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  color: #8fa9bc;
+  font-size: 0.75rem;
+}
+
+.caption {
+  margin-top: 40px;
+  color: #8fa9bc;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bell { animation: none; }
+}
+
+/* Data plate, the riveted metal tag on the side of a condensing unit. */
+.plate {
+  position: relative;
+  border-radius: 6px;
+  padding: 28px 28px 26px;
+  background: linear-gradient(155deg, #dfe8ee 0%, #c3d0da 100%);
+  color: #0a1b33;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.6) inset,
+    0 0 0 6px #9fb3c3,
+    0 24px 50px -18px rgba(0, 0, 0, 0.6);
+}
+.rivet {
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #f4f8fb, #7d91a3);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.35);
+}
+.plateRow {
+  display: grid;
+  grid-template-columns: 6.5rem 1fr;
+  gap: 12px;
+  padding: 9px 0;
+  border-top: 1px solid rgba(10, 27, 51, 0.22);
+  font-size: 1rem;
+  line-height: 1.35;
+}
+.plateKey { color: #3b536b; }
+.plateValue { font-weight: 700; }
+
+.colon { animation: blink 1s steps(1, end) infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .colon { animation: none; }
+}
+
+/* Older long form copy inside the new templates picks up the new heading style. */
+.prose h2 {
+  font-family: var(--font-lp-display), Impact, sans-serif;
+  font-weight: 800;
+  line-height: 0.98;
+  font-size: clamp(2.25rem, 5vw, 3.25rem);
+  color: #0f2c59;
+}
+.prose h3 {
+  font-family: var(--font-lp-display), Impact, sans-serif;
+  font-weight: 800;
+  line-height: 1;
+  font-size: 1.9rem;
+  color: #0f2c59;
+}

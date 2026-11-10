@@ -3,6 +3,7 @@
 
 import type { Metadata } from "next"
 import { ServicePageTemplate } from "@/components/service-page-template"
+import { SERVICE_CONTENT } from "@/components/site/service-content"
 import { Store, Snowflake, Wrench, Clock, Award, ShieldCheck, Warehouse, Refrigerator } from "lucide-react"
 
 export const metadata: Metadata = {
@@ -29,6 +30,7 @@ export const metadata: Metadata = {
 export default function CommercialRefrigerationPage() {
   return (
     <ServicePageTemplate
+      content={SERVICE_CONTENT.commercialRefrigeration}
       title="Commercial Refrigeration"
       description="Cold Fix Services keeps commercial refrigeration running for shops, restaurants, bars, and supermarkets across Gauteng. We repair and maintain display fridges, under counter units, bottle coolers, deli cabinets, ice machines, and more, helping you protect stock, meet food safety standards, and avoid costly downtime."
       icon={Store}

@@ -3,6 +3,7 @@
 
 import type { Metadata } from "next"
 import { ServicePageTemplate } from "@/components/service-page-template"
+import { SERVICE_CONTENT } from "@/components/site/service-content"
 import { Warehouse, Snowflake, Wrench, Clock, Award, ShieldCheck, Store, Refrigerator } from "lucide-react"
 
 export const metadata: Metadata = {
@@ -29,6 +30,7 @@ export const metadata: Metadata = {
 export default function ColdRoomPage() {
   return (
     <ServicePageTemplate
+      content={SERVICE_CONTENT.coldRoomInstallationRepair}
       title="Cold Room Installation and Repair"
       description="Cold Fix Services designs, installs, repairs, and maintains walk in cold rooms and freezer rooms for restaurants, butcheries, retailers, and other businesses across Gauteng. From new installations to breakdown repairs and routine maintenance, our technicians keep your stock at the right temperature and your operation running."
       icon={Warehouse}

@@ -3,6 +3,7 @@
 
 import type { Metadata } from "next"
 import { ServicePageTemplate } from "@/components/service-page-template"
+import { SERVICE_CONTENT } from "@/components/site/service-content"
 import { Wrench, WashingMachine, Clock, Award, ShieldCheck, Refrigerator, Zap, Store } from "lucide-react"
 
 export const metadata: Metadata = {
@@ -29,6 +30,7 @@ export const metadata: Metadata = {
 export default function ApplianceRepairsPage() {
   return (
     <ServicePageTemplate
+      content={SERVICE_CONTENT.applianceRepairs}
       title="Appliance Repairs"
       description="A broken appliance disrupts your whole day. Cold Fix Services repairs washing machines, tumble dryers, dishwashers, ovens, stoves, and other household appliances across Gauteng. Our technicians diagnose the fault, quote honestly, and repair with quality parts so your home runs smoothly again."
       icon={WashingMachine}

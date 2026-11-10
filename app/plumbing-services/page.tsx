@@ -3,6 +3,7 @@
 
 import type { Metadata } from "next"
 import { ServicePageTemplate } from "@/components/service-page-template"
+import { SERVICE_CONTENT } from "@/components/site/service-content"
 import { Droplets, Wrench, Clock, ShieldCheck, CheckCircle, Refrigerator, WashingMachine, Zap } from "lucide-react"
 
 export const metadata: Metadata = {
@@ -29,6 +30,7 @@ export const metadata: Metadata = {
 export default function PlumbingServicesPage() {
   return (
     <ServicePageTemplate
+      content={SERVICE_CONTENT.plumbingServices}
       title="Plumbing Services"
       description="Many appliances need a reliable water or gas connection to work safely. Cold Fix Services provides the plumbing that supports our appliance, refrigeration, and cooling installations, including water lines for dishwashers, washing machines, and ice makers, gas connections for hobs and ovens, and leak repairs on the pipework feeding your equipment across Gauteng."
       icon={Droplets}

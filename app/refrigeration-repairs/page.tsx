@@ -3,6 +3,7 @@
 
 import type { Metadata } from "next"
 import { ServicePageTemplate } from "@/components/service-page-template"
+import { SERVICE_CONTENT } from "@/components/site/service-content"
 import {
   Refrigerator,
   Snowflake,
@@ -38,8 +39,9 @@ export const metadata: Metadata = {
 export default function RefrigerationRepairsPage() {
   return (
     <ServicePageTemplate
+      content={SERVICE_CONTENT.refrigerationRepairs}
       title="Fridge & Freezer Repairs in Gauteng"
-      description="Need a fridge or freezer repair? Cold Fix Services provides fast, reliable on-site repairs for refrigerators, fridges, freezers and chest freezers across Gauteng. Our refrigerant-handling certified technicians diagnose the actual fault, explain the repair clearly and provide an upfront quote before work starts. We repair cooling problems, refrigerant leaks, thermostats, compressors, fans, defrost systems, door seals and more."
+      description="Need a fridge or freezer repair? Cold Fix Services provides fast, reliable on-site repairs for refrigerators, fridges, freezers and chest freezers across Gauteng. Our refrigerant handling certified technicians diagnose the actual fault, explain the repair clearly and provide an upfront quote before work starts. We repair cooling problems, refrigerant leaks, thermostats, compressors, fans, defrost systems, door seals and more."
       icon={Refrigerator}
       heroImage="/refrigeration-repair-technician.png"
       priceRange="Free quotes"
@@ -60,15 +62,15 @@ export default function RefrigerationRepairsPage() {
       ]}
       benefits={[
         {
-          title: "Fast Same-Day Response",
+          title: "Fast Same Day Response",
           description:
-            "A broken fridge cannot always wait. We respond quickly with same-day callouts where available to help protect your food and stock.",
+            "A broken fridge cannot always wait. We respond quickly with same day callouts where available to help protect your food and stock.",
           icon: Clock,
         },
         {
           title: "Certified Technicians",
           description:
-            "Our refrigerant-handling certified technicians diagnose cooling faults and use proper refrigeration repair methods.",
+            "Our refrigerant handling certified technicians diagnose cooling faults and use proper refrigeration repair methods.",
           icon: Award,
         },
         {
@@ -105,7 +107,7 @@ export default function RefrigerationRepairsPage() {
         },
         {
           step: 2,
-          title: "On-Site Diagnosis",
+          title: "On Site Diagnosis",
           description:
             "A technician inspects the unit and tests the cooling system to identify the actual cause of the problem.",
         },
@@ -191,7 +193,7 @@ export default function RefrigerationRepairsPage() {
                   </h3>
                   <p className="text-sm text-muted-foreground">
                     Fridge not cooling, freezer not freezing, temperature
-                    problems, refrigerant leaks, water leaks, ice build-up,
+                    problems, refrigerant leaks, water leaks, ice build up,
                     loud noises, power tripping, faulty thermostats, compressor
                     problems and doors that no longer seal properly.
                   </p>
@@ -225,7 +227,7 @@ export default function RefrigerationRepairsPage() {
                   <p className="text-sm text-muted-foreground">
                     We give honest advice on whether repairing your fridge or
                     freezer is worthwhile or whether replacement may be the
-                    better long-term option.
+                    better long term option.
                   </p>
                 </div>
               </div>

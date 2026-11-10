@@ -3,6 +3,7 @@
 
 import type { Metadata } from "next"
 import { ServicePageTemplate } from "@/components/service-page-template"
+import { SERVICE_CONTENT } from "@/components/site/service-content"
 import { ShieldCheck, Snowflake, Wrench, Clock, Award, Wind, Store, Warehouse } from "lucide-react"
 
 export const metadata: Metadata = {
@@ -29,6 +30,7 @@ export const metadata: Metadata = {
 export default function HvacMaintenancePage() {
   return (
     <ServicePageTemplate
+      content={SERVICE_CONTENT.hvacMaintenanceContracts}
       title="HVAC Maintenance Contracts"
       description="Regular maintenance keeps air conditioning and refrigeration systems efficient, reliable, and cheaper to run. Cold Fix Services offers tailored HVAC maintenance contracts for offices, retail, and industrial sites across Gauteng. Scheduled servicing means fewer breakdowns, longer equipment life, and lower running costs."
       icon={ShieldCheck}

@@ -3,6 +3,7 @@
 
 import type { Metadata } from "next"
 import { ServicePageTemplate } from "@/components/service-page-template"
+import { SERVICE_CONTENT } from "@/components/site/service-content"
 import { WashingMachine, Wrench, Clock, Award, ShieldCheck, Zap, Droplets, Store } from "lucide-react"
 
 export const metadata: Metadata = {
@@ -29,6 +30,7 @@ export const metadata: Metadata = {
 export default function WashingMachineRepairsPage() {
   return (
     <ServicePageTemplate
+      content={SERVICE_CONTENT.washingMachineRepairs}
       title="Washing Machine Repairs"
       description="A washing machine that won't start, won't drain, or floods your laundry doesn't wait for a convenient time to break. Cold Fix Services repairs washing machines across Gauteng with same day callouts, honest diagnostics, and quality parts, so laundry day gets back to normal fast."
       icon={WashingMachine}
