@@ -4,12 +4,14 @@ import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { Sheet, SheetContent, SheetDescription, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
 import {
   Menu,
   Phone,
   ChevronDown,
   ChevronRight,
+  Snowflake,
+  ThermometerSnowflake,
   X,
   MapPin,
   Mail,
@@ -89,6 +91,20 @@ const services = [
     href: "/property-maintenance",
     description: "Scheduled upkeep for homes and businesses",
     icon: Home,
+  },
+  {
+    title: "Cold Room & Commercial Repairs",
+    short: "Cold Room Repairs",
+    href: "/cold-room-commercial-refrigeration-repairs",
+    description: "Repairs only, for cold rooms and shop fridges",
+    icon: ThermometerSnowflake,
+  },
+  {
+    title: "Ice Machine Repairs",
+    short: "Ice Machines",
+    href: "/ice-machine-repairs",
+    description: "For bars, restaurants, hotels and shops",
+    icon: Snowflake,
   },
 ]
 
@@ -277,7 +293,7 @@ export function Header() {
                       onClick={() => setServicesOpen(false)}
                       className="flex items-center justify-center gap-2 rounded-md bg-primary/5 p-3 text-sm font-semibold text-primary hover:bg-primary hover:text-white transition-all"
                     >
-                      View All 10 Services <ChevronRight className="h-4 w-4" />
+                      View All Services <ChevronRight className="h-4 w-4" />
                     </Link>
                   </div>
                 </div>
@@ -324,6 +340,8 @@ export function Header() {
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="w-full max-w-md p-0 border-l-0 overflow-hidden [&>button]:hidden">
+              <SheetTitle className="sr-only">Site menu</SheetTitle>
+              <SheetDescription className="sr-only">Links to our services, service areas and contact details.</SheetDescription>
               {/* Mobile Menu Header */}
               <div className="bg-primary p-6 text-primary-foreground">
                 <div className="flex items-center justify-between mb-4">
@@ -454,7 +472,7 @@ export function Header() {
                     <div
                       className={cn(
                         "overflow-hidden transition-all duration-300",
-                        mobileServicesOpen ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0",
+                        mobileServicesOpen ? "max-h-[900px] opacity-100" : "max-h-0 opacity-0",
                       )}
                     >
                       <div className="grid grid-cols-2 gap-2 px-4 pb-4">
@@ -466,7 +484,7 @@ export function Header() {
                             onClick={() => setIsOpen(false)}
                           >
                             <service.icon className="h-5 w-5 text-secondary" />
-                            <span className="line-clamp-2">{service.title.split(" ").slice(0, 2).join(" ")}</span>
+                            <span className="line-clamp-2">{(service as { short?: string }).short ?? service.title.split(" ").slice(0, 2).join(" ")}</span>
                           </Link>
                         ))}
                       </div>
@@ -475,7 +493,7 @@ export function Header() {
                         className="mx-4 mb-4 flex items-center justify-center gap-2 rounded-xl border-2 border-dashed border-secondary/30 p-3 text-sm font-medium text-secondary hover:bg-secondary/5 transition-colors"
                         onClick={() => setIsOpen(false)}
                       >
-                        View All 10 Services
+                        View All Services
                         <ChevronRight className="h-4 w-4" />
                       </Link>
                     </div>

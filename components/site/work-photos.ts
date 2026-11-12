@@ -18,6 +18,11 @@ export const WORK_PHOTOS = {
   fridgeManifold: { src: "/coldfix-fridge-gas-manifold-diagnostics-gauteng.jpg", width: 590, height: 590, alt: "Gauge manifold hoses and refrigerant cylinders connected to the back of a fridge for diagnostics", caption: "Checking a fridge with a gauge manifold." },
   washerOnSite: { src: "/coldfix-top-load-washing-machine-repair-on-site-gauteng.jpg", width: 1536, height: 2048, alt: "Top loading washing machine opened up in a yard with its top panel, wiring and a toolbox of parts visible", caption: "Repairing a top loading washing machine on site." },
   washerHisense: { src: "/coldfix-top-load-washing-machine-repair-gauteng.jpg", width: 1552, height: 1415, alt: "Hisense top loading washing machine standing outside on a wooden plank", caption: "A Hisense top loading washing machine." },
+  iceCompressor: { src: "/coldfix-ice-machine-compressor-and-condenser-repair-gauteng.jpg", width: 480, height: 638, alt: "Compressor, condenser fan and wiring inside the refrigeration compartment of an ice machine", caption: "The compressor and condenser fan inside an ice machine." },
+  iceMakerAssembly: { src: "/coldfix-ice-maker-assembly-and-ice-bin-repair-gauteng.jpg", width: 700, height: 438, alt: "Ice maker assembly above a bin of ice cubes", caption: "An ice maker assembly above the ice bin." },
+  iceModuleRemoved: { src: "/coldfix-ice-maker-module-removed-for-repair-gauteng.jpg", width: 480, height: 640, alt: "Ice maker module taken out of a freezer compartment with its wiring and water fittings showing", caption: "An ice maker module taken out for repair." },
+  iceTray: { src: "/coldfix-ice-maker-tray-and-wiring-repair-gauteng.jpg", width: 738, height: 414, alt: "Ice maker tray assembly lying on a counter with its wiring plug", caption: "An ice maker tray assembly and its wiring plug." },
+  iceMachine: { src: "/coldfix-under-counter-ice-machine-repair-gauteng.jpg", width: 554, height: 554, alt: "Stainless steel under counter ice machine with a bin full of ice and a scoop", caption: "An under counter ice machine." },
 } satisfies Record<string, WorkPhoto>
 
 export type WorkPhotoKey = keyof typeof WORK_PHOTOS
