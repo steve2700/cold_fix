@@ -23,6 +23,9 @@ export const WORK_PHOTOS = {
   iceModuleRemoved: { src: "/coldfix-ice-maker-module-removed-for-repair-gauteng.jpg", width: 480, height: 640, alt: "Ice maker module taken out of a freezer compartment with its wiring and water fittings showing", caption: "An ice maker module taken out for repair." },
   iceTray: { src: "/coldfix-ice-maker-tray-and-wiring-repair-gauteng.jpg", width: 738, height: 414, alt: "Ice maker tray assembly lying on a counter with its wiring plug", caption: "An ice maker tray assembly and its wiring plug." },
   iceMachine: { src: "/coldfix-under-counter-ice-machine-repair-gauteng.jpg", width: 554, height: 554, alt: "Stainless steel under counter ice machine with a bin full of ice and a scoop", caption: "An under counter ice machine." },
+  acManifold: { src: "/coldfix-aircon-gas-manifold-servicing-gauteng.jpg", width: 400, height: 533, alt: "Gauge manifold with blue and red hoses connected to an outdoor aircon unit for servicing, with a drill on top", caption: "Checking aircon gas pressures with a gauge manifold." },
+  acInstalled: { src: "/coldfix-split-aircon-outdoor-unit-installed-gauteng.jpg", width: 675, height: 900, alt: "Outdoor unit of a split aircon on a steel stand against a brick wall, with a white pipe cover running up the wall", caption: "An outdoor split aircon unit on its stand." },
+  acWallUnit: { src: "/coldfix-aircon-outdoor-unit-wall-mounted-gauteng.jpg", width: 547, height: 365, alt: "Outdoor aircon unit mounted on a brick wall with an isolator switch and cable", caption: "A wall mounted outdoor aircon unit." },
 } satisfies Record<string, WorkPhoto>
 
 export type WorkPhotoKey = keyof typeof WORK_PHOTOS

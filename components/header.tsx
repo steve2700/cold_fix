@@ -10,6 +10,7 @@ import {
   Phone,
   ChevronDown,
   ChevronRight,
+  AirVent,
   Snowflake,
   ThermometerSnowflake,
   X,
@@ -105,6 +106,13 @@ const services = [
     href: "/ice-machine-repairs",
     description: "For bars, restaurants, hotels and shops",
     icon: Snowflake,
+  },
+  {
+    title: "Aircon Repairs",
+    short: "Aircon Repairs",
+    href: "/aircon-repairs",
+    description: "Repairs only, for homes and businesses",
+    icon: AirVent,
   },
 ]
 

@@ -9,6 +9,7 @@ import { usePathname } from "next/navigation"
 const LANDING_PATHS = [
   "/cold-room-commercial-refrigeration-repairs",
   "/ice-machine-repairs",
+  "/aircon-repairs",
 ]
 
 export function HideOnLanding({ children }: { children: ReactNode }) {
