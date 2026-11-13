@@ -133,7 +133,7 @@ export default function IceMachineRepairsLandingPage() {
       />
 
       {/* Fault finder */}
-      <section className="bg-[#e6f0f5]">
+      <section id="faults" className="scroll-mt-16 bg-[#e6f0f5]">
         <div className="mx-auto max-w-6xl px-5 py-16 md:py-24">
           <h2 className={`${h2Class} max-w-[40rem]`} style={displayFont}>
             Tell us what the ice machine is doing.
@@ -142,7 +142,7 @@ export default function IceMachineRepairsLandingPage() {
             Pick the one closest to your problem. You will see what usually causes it, what we do about it, and what to
             do while you wait.
           </p>
-          <FaultFinder faults={ICE_MACHINE_FAULTS} place="ice_fault_finder" />
+          <FaultFinder faults={ICE_MACHINE_FAULTS} place="ice_fault_finder" selectFromUrl scrollToId="faults" />
         </div>
       </section>
 

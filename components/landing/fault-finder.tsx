@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { ChevronDown } from "lucide-react"
 import { CallLink, WhatsAppLink } from "@/components/landing/cta"
 import type { Fault } from "@/components/landing/fault-types"
@@ -53,12 +53,32 @@ export function FaultFinder({
   faults,
   place = "fault_finder",
   labels = DEFAULT_LABELS,
+  selectFromUrl = false,
+  scrollToId,
 }: {
   faults: Fault[]
   place?: string
   labels?: FaultLabels
+  // When true, a link such as ?fault=leak opens that fault straight away (used by ad sitelinks).
+  selectFromUrl?: boolean
+  // The id of the section to scroll to when a fault is chosen from the link.
+  scrollToId?: string
 }) {
   const [openId, setOpenId] = useState<string>(faults[0].id)
+
+  useEffect(() => {
+    if (!selectFromUrl) return
+    const wanted = new URLSearchParams(window.location.search).get("fault")
+    if (wanted && faults.some((f) => f.id === wanted)) {
+      setOpenId(wanted)
+      if (scrollToId) {
+        requestAnimationFrame(() => {
+          document.getElementById(scrollToId)?.scrollIntoView({ block: "start" })
+        })
+      }
+    }
+  }, [faults, selectFromUrl, scrollToId])
+
   const current = faults.find((f) => f.id === openId) ?? faults[0]
 
   return (
